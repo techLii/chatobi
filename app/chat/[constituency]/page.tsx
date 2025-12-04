@@ -1,6 +1,8 @@
 import { constituencies } from '@/config/constituencies';
 import { notFound } from 'next/navigation';
 import ChatClient from '@/components/ChatClient';
+import ConstituencySelect from '@/components/ConstituencySelect';
+import UserControls from '@/components/UserControls';
 
 interface PageProps {
     params: Promise<{ constituency: string }>;
@@ -16,15 +18,21 @@ export default async function ChatPage({ params }: PageProps) {
 
     return (
         <div className="p-4 max-w-2xl mx-auto font-mono">
-            <header className="mb-6 border-b border-black pb-2 flex justify-between items-baseline">
+            <header className="mb-6 border-b border-black pb-2 flex flex-col md:flex-row justify-between items-start md:items-baseline gap-4">
                 <div>
-                    <h1 className="text-xl font-bold uppercase tracking-wider">#{constituencyData.name}</h1>
+                    <div className="flex items-center gap-2 mb-1">
+                        <h1 className="text-xl font-bold uppercase tracking-wider">#{constituencyData.name}</h1>
+                        <ConstituencySelect currentConstituency={constituency} />
+                    </div>
                     <p className="text-xs text-gray-500">CONSTITUENCY CHAT</p>
                 </div>
-                <div className="flex gap-4">
-                    <a href={`/chat/${constituency}/leaderboard`} className="text-sm underline hover:no-underline">Leaderboard</a>
-                    <a href={`/chat/${constituency}/trending`} className="text-sm underline hover:no-underline">Trending</a>
-                    <a href={`/chat/${constituency}/events`} className="text-sm underline hover:no-underline">Events</a>
+                <div className="flex flex-col items-end gap-1">
+                    <div className="flex gap-4">
+                        <a href={`/chat/${constituency}/leaderboard`} className="text-sm underline hover:no-underline">Leaderboard</a>
+                        <a href={`/chat/${constituency}/trending`} className="text-sm underline hover:no-underline">Trending</a>
+                        <a href={`/chat/${constituency}/events`} className="text-sm underline hover:no-underline">Events</a>
+                    </div>
+                    <UserControls />
                 </div>
             </header>
 

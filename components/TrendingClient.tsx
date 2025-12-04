@@ -84,7 +84,7 @@ export default function TrendingClient({ constituency }: { constituency: string 
                     key={msg.$id}
                     className="border border-black p-4 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
                 >
-                    <div className="flex justify-between items-start mb-2">
+                    <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
                         <div className="flex items-center gap-2">
                             <span className="font-bold text-sm bg-black text-white px-2 py-0.5">
                                 #{index + 1}

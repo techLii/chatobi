@@ -7,7 +7,7 @@ export default function Home() {
       <main className="max-w-6xl mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16 pt-8">
-          <h1 className="text-5xl font-bold uppercase tracking-wider mb-4 text-black">
+          <h1 className="text-3xl md:text-5xl font-bold uppercase tracking-wider mb-4 text-black">
             Welcome to Chatobi
           </h1>
           <p className="text-xl text-gray-700 mb-2">
@@ -19,7 +19,7 @@ export default function Home() {
         </div>
 
         {/* Features Section */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <div className="border border-black p-6 bg-white">
             <div className="text-3xl mb-3">💬</div>
             <h3 className="font-bold text-lg mb-2 text-black uppercase">Real-Time Chat</h3>
@@ -50,7 +50,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold uppercase tracking-wider mb-6 text-center text-black">
             Choose Your Constituency
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {constituencies.map((constituency) => (
               <Link
                 key={constituency.id}

@@ -93,7 +93,7 @@ export default function LeaderboardClient({ constituency }: { constituency: stri
             {leaders.map((leader, index) => (
                 <div
                     key={leader.userId}
-                    className={`flex items-center justify-between p-4 border border-black ${index === 0 ? 'bg-yellow-50' : 'bg-white'
+                    className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-black ${index === 0 ? 'bg-yellow-50' : 'bg-white'
                         }`}
                 >
                     <div className="flex items-center gap-4">
