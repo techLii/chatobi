@@ -38,7 +38,7 @@ export default function EventsClient({ constituency }: { constituency: string })
                         Query.limit(50)
                     ]
                 );
-                setEvents(response.documents as Event[]);
+                setEvents(response.documents as unknown as Event[]);
             } catch (error) {
                 console.error('Error loading events:', error);
             }

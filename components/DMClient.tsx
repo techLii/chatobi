@@ -42,7 +42,7 @@ export default function DMClient({ userId }: { userId: string }) {
                         Query.limit(100)
                     ]
                 );
-                setMessages(response.documents as DM[]);
+                setMessages(response.documents as unknown as DM[]);
             } catch (error) {
                 console.error('Error loading DMs:', error);
             }

@@ -31,7 +31,7 @@ export default function ChatClient({ constituency }: { constituency: string }) {
                         Query.limit(50)
                     ]
                 );
-                setMessages(response.documents.reverse() as Message[]);
+                setMessages(response.documents.reverse() as unknown as Message[]);
             } catch (error) {
                 console.error('Error loading messages:', error);
             }
