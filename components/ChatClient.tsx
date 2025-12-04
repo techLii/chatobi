@@ -11,6 +11,7 @@ interface Message {
     body: string;
     username: string;
     userId: string;
+    constituency: string;
     $createdAt: string;
 }
 
