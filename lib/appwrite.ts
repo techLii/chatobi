@@ -19,3 +19,4 @@ export const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 export const CHAT_COLLECTION_ID = 'messages';
 export const EVENTS_COLLECTION_ID = 'events';
 export const DMS_COLLECTION_ID = 'dms';
+export const PROFILES_COLLECTION_ID = 'profiles';

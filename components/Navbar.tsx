@@ -21,6 +21,9 @@ export default function Navbar() {
                             <span className="text-sm">
                                 👤 <span className="font-bold">{user.name}</span>
                             </span>
+                            <Link href="/profile" className="text-sm border border-black px-3 py-1 hover:bg-gray-100 uppercase tracking-wide">
+                                Profile
+                            </Link>
                             <button
                                 onClick={logout}
                                 className="text-sm border border-black px-3 py-1 hover:bg-black hover:text-white uppercase tracking-wide"
