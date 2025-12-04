@@ -9,7 +9,7 @@ export default function ConstituencySelect({ currentConstituency }: { currentCon
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedId = e.target.value;
         if (selectedId) {
-            router.push(`/chat/${selectedId}`);
+            router.push(`/dashboard/chat/${selectedId}`);
         }
     };
 
