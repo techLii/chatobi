@@ -177,25 +177,26 @@ export default function ChatClient({ constituency }: { constituency: string }) {
         }
     };
 
+
     return (
-        <div>
+        <div className="flex flex-col h-full">
             {!user && (
-                <div className="mb-4 p-4 border border-black bg-yellow-50">
-                    <p className="text-sm mb-2 text-black">
+                <div className="mb-2 p-2 border border-black dark:border-gray-700 bg-yellow-50 dark:bg-yellow-900/20">
+                    <p className="text-xs mb-1 text-black dark:text-gray-200">
                         <strong>You must be logged in to post messages.</strong>
                     </p>
                     <Link
                         href="/login"
-                        className="inline-block bg-black text-white px-4 py-2 text-sm uppercase tracking-wide hover:bg-gray-800"
+                        className="inline-block bg-black dark:bg-white text-white dark:text-black px-3 py-1 text-xs uppercase tracking-wide hover:bg-gray-800 dark:hover:bg-gray-200"
                     >
                         Login to Post
                     </Link>
                 </div>
             )}
 
-            <div className="space-y-4 mb-6 h-[60vh] overflow-y-auto border border-black p-4 rounded-none bg-gray-50">
+            <div className="flex-1 overflow-y-auto border border-black dark:border-gray-700 p-2 rounded-none bg-gray-50 dark:bg-gray-900 mb-2">
                 {messages.length === 0 ? (
-                    <div className="text-gray-400 text-center italic text-sm">-- No messages yet --</div>
+                    <div className="text-gray-400 text-center italic text-xs">-- No messages yet --</div>
                 ) : (
                     [...messages]
                         .sort((a, b) => {
@@ -212,46 +213,46 @@ export default function ChatClient({ constituency }: { constituency: string }) {
                             const hasDownvoted = user && downvotes.includes(user.$id);
 
                             return (
-                                <div key={msg.$id} className="border-b border-gray-300 pb-2 flex gap-3">
-                                    <div className="flex flex-col items-center justify-start pt-1 min-w-[24px]">
+                                <div key={msg.$id} className="border-b border-gray-300 dark:border-gray-700 pb-1 mb-1 flex gap-2">
+                                    <div className="flex flex-col items-center justify-start pt-1 min-w-[20px]">
                                         <button
                                             onClick={() => handleVote(msg, 'up')}
                                             disabled={!user}
-                                            className={`text-xs hover:bg-gray-100 p-1 rounded ${hasUpvoted ? 'text-green-600 font-bold' : 'text-gray-400'}`}
+                                            className={`text-[10px] hover:bg-gray-100 dark:hover:bg-gray-800 p-0.5 rounded ${hasUpvoted ? 'text-green-600 font-bold' : 'text-gray-400'}`}
                                             title="Upvote"
                                         >
                                             ▲
                                         </button>
-                                        <span className={`text-xs font-mono my-1 ${score > 0 ? 'text-green-600' : score < 0 ? 'text-red-600' : 'text-gray-500'}`}>
+                                        <span className={`text-[10px] font-mono my-0.5 ${score > 0 ? 'text-green-600' : score < 0 ? 'text-red-600' : 'text-gray-500'}`}>
                                             {score}
                                         </span>
                                         <button
                                             onClick={() => handleVote(msg, 'down')}
                                             disabled={!user}
-                                            className={`text-xs hover:bg-gray-100 p-1 rounded ${hasDownvoted ? 'text-red-600 font-bold' : 'text-gray-400'}`}
+                                            className={`text-[10px] hover:bg-gray-100 dark:hover:bg-gray-800 p-0.5 rounded ${hasDownvoted ? 'text-red-600 font-bold' : 'text-gray-400'}`}
                                             title="Downvote"
                                         >
                                             ▼
                                         </button>
                                     </div>
                                     <div className="flex-1">
-                                        <div className="flex justify-between items-baseline mb-1">
+                                        <div className="flex justify-between items-baseline mb-0.5">
                                             <div className="flex items-baseline gap-2 flex-wrap">
                                                 {msg.userId === user?.$id ? (
-                                                    <span className="font-bold text-sm text-black">
+                                                    <span className="font-bold text-sm text-black dark:text-white">
                                                         {msg.username}
                                                     </span>
                                                 ) : (
                                                     <Link
                                                         href={`/dm/${msg.userId}`}
-                                                        className="font-bold text-sm text-black hover:underline cursor-pointer"
+                                                        className="font-bold text-sm text-black dark:text-white hover:underline cursor-pointer"
                                                         title={`Send DM to ${msg.username}`}
                                                     >
                                                         {msg.username} 💬
                                                     </Link>
                                                 )}
                                                 {(msg.userAge || msg.userSex || msg.userLocation) && (
-                                                    <span className="text-xs text-gray-600 font-mono">
+                                                    <span className="text-[10px] text-gray-600 dark:text-gray-400 font-mono">
                                                         {[
                                                             msg.userAge,
                                                             msg.userSex ? `(${msg.userSex})` : null,
@@ -260,11 +261,11 @@ export default function ChatClient({ constituency }: { constituency: string }) {
                                                     </span>
                                                 )}
                                             </div>
-                                            <span className="text-xs text-gray-500 whitespace-nowrap ml-2">
-                                                {new Date(msg.$createdAt).toLocaleTimeString()}
+                                            <span className="text-[10px] text-gray-500 dark:text-gray-400 whitespace-nowrap ml-2">
+                                                {new Date(msg.$createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </span>
                                         </div>
-                                        <p className="text-sm text-black">{msg.body}</p>
+                                        <p className="text-sm text-black dark:text-gray-200 leading-tight">{msg.body}</p>
                                     </div>
                                 </div>
                             );
@@ -272,19 +273,19 @@ export default function ChatClient({ constituency }: { constituency: string }) {
                 )}
             </div>
 
-            <form onSubmit={handleSubmit} className="flex gap-2">
+            <form onSubmit={handleSubmit} className="flex gap-2 shrink-0">
                 <input
                     type="text"
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     placeholder={user ? "Type a message..." : "Login to post messages"}
                     disabled={!user}
-                    className="flex-1 border border-black p-2 rounded-none bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-black disabled:bg-gray-200"
+                    className="flex-1 border border-black dark:border-gray-600 p-2 rounded-none bg-white dark:bg-gray-800 text-black dark:text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white disabled:bg-gray-200 dark:disabled:bg-gray-700 text-sm"
                 />
                 <button
                     type="submit"
                     disabled={!user}
-                    className="bg-black text-white px-6 py-2 rounded-none hover:bg-gray-800 uppercase text-sm font-bold tracking-wide disabled:bg-gray-400"
+                    className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-none hover:bg-gray-800 dark:hover:bg-gray-200 uppercase text-xs font-bold tracking-wide disabled:bg-gray-400 dark:disabled:bg-gray-600"
                 >
                     Send
                 </button>
