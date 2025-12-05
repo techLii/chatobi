@@ -1,7 +1,6 @@
 import { constituencies } from '@/config/constituencies';
 import { notFound } from 'next/navigation';
 import ChatClient from '@/components/ChatClient';
-import ConstituencySelect from '@/components/ConstituencySelect';
 import UserControls from '@/components/UserControls';
 
 interface PageProps {
@@ -22,7 +21,6 @@ export default async function ChatPage({ params }: PageProps) {
                 <div>
                     <div className="flex items-center gap-2 mb-1">
                         <h1 className="text-xl font-bold uppercase tracking-wider">#{constituencyData.name}</h1>
-                        <ConstituencySelect currentConstituency={constituency} />
                     </div>
                     <p className="text-xs text-gray-500">CONSTITUENCY CHAT</p>
                 </div>

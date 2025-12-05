@@ -93,24 +93,24 @@ export default function LeaderboardClient({ constituency }: { constituency: stri
             {leaders.map((leader, index) => (
                 <div
                     key={leader.userId}
-                    className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-black ${index === 0 ? 'bg-yellow-50' : 'bg-white'
+                    className={`flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-black dark:border-gray-700 ${index === 0 ? 'bg-yellow-50 dark:bg-yellow-900/20' : 'bg-white dark:bg-gray-800'
                         }`}
                 >
                     <div className="flex items-center gap-4">
-                        <span className={`font-bold text-lg w-8 h-8 flex items-center justify-center rounded-full border border-black ${index === 0 ? 'bg-yellow-400 text-black' :
-                                index === 1 ? 'bg-gray-300 text-black' :
-                                    index === 2 ? 'bg-orange-300 text-black' : 'bg-gray-100 text-gray-600'
+                        <span className={`font-bold text-lg w-8 h-8 flex items-center justify-center rounded-full border border-black dark:border-gray-600 ${index === 0 ? 'bg-yellow-400 text-black' :
+                            index === 1 ? 'bg-gray-300 text-black' :
+                                index === 2 ? 'bg-orange-300 text-black' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                             }`}>
                             {index + 1}
                         </span>
                         <div>
-                            <p className="font-bold text-lg">{leader.username}</p>
-                            <p className="text-xs text-gray-500 uppercase tracking-wider">Rank {index + 1}</p>
+                            <p className="font-bold text-lg text-black dark:text-white">{leader.username}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Rank {index + 1}</p>
                         </div>
                     </div>
                     <div className="text-right">
-                        <span className="block text-2xl font-bold text-black">{leader.score}</span>
-                        <span className="text-xs text-gray-500 uppercase">Points</span>
+                        <span className="block text-2xl font-bold text-black dark:text-white">{leader.score}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 uppercase">Points</span>
                     </div>
                 </div>
             ))}

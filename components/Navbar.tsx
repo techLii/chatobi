@@ -16,9 +16,9 @@ export default function Navbar() {
     if (loading) return null;
 
     return (
-        <nav className="bg-white border-b border-black font-mono">
+        <nav className="bg-white dark:bg-gray-900 border-b border-black dark:border-gray-700 font-mono transition-colors duration-300">
             <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-                <Link href="/" className="text-xl font-bold uppercase tracking-wider hover:underline">
+                <Link href="/" className="text-xl font-bold uppercase tracking-wider hover:underline text-black dark:text-white">
                     Chatobi
                 </Link>
 

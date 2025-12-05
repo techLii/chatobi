@@ -120,13 +120,13 @@ export default function EventsClient({ constituency }: { constituency: string })
     return (
         <div>
             {!user && (
-                <div className="mb-4 p-4 border border-black bg-yellow-50">
-                    <p className="text-sm mb-2 text-black">
+                <div className="mb-4 p-4 border border-black dark:border-gray-700 bg-yellow-50 dark:bg-yellow-900/20">
+                    <p className="text-sm mb-2 text-black dark:text-gray-200">
                         <strong>You must be logged in to create events.</strong>
                     </p>
                     <Link
                         href="/login"
-                        className="inline-block bg-black text-white px-4 py-2 text-sm uppercase tracking-wide hover:bg-gray-800"
+                        className="inline-block bg-black dark:bg-white text-white dark:text-black px-4 py-2 text-sm uppercase tracking-wide hover:bg-gray-800 dark:hover:bg-gray-200"
                     >
                         Login
                     </Link>
@@ -137,7 +137,7 @@ export default function EventsClient({ constituency }: { constituency: string })
                 <div className="mb-4">
                     <button
                         onClick={() => setShowForm(!showForm)}
-                        className="bg-black text-white px-4 py-2 rounded-none hover:bg-gray-800 uppercase text-sm font-bold tracking-wide"
+                        className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-none hover:bg-gray-800 dark:hover:bg-gray-200 uppercase text-sm font-bold tracking-wide"
                     >
                         {showForm ? 'Cancel' : '+ Create Event'}
                     </button>
@@ -145,48 +145,48 @@ export default function EventsClient({ constituency }: { constituency: string })
             )}
 
             {showForm && (
-                <form onSubmit={handleSubmit} className="mb-6 border border-black p-4 bg-gray-50">
+                <form onSubmit={handleSubmit} className="mb-6 border border-black dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-900">
                     <div className="mb-3">
-                        <label className="block text-sm font-bold mb-1 text-black">Event Title *</label>
+                        <label className="block text-sm font-bold mb-1 text-black dark:text-gray-300">Event Title *</label>
                         <input
                             type="text"
                             value={newEvent.title}
                             onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-                            className="w-full border border-black p-2 rounded-none bg-white text-black focus:outline-none focus:ring-1 focus:ring-black"
+                            className="w-full border border-black dark:border-gray-600 p-2 rounded-none bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white"
                             required
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="block text-sm font-bold mb-1 text-black">Description *</label>
+                        <label className="block text-sm font-bold mb-1 text-black dark:text-gray-300">Description *</label>
                         <textarea
                             value={newEvent.description}
                             onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
-                            className="w-full border border-black p-2 rounded-none bg-white text-black focus:outline-none focus:ring-1 focus:ring-black h-20"
+                            className="w-full border border-black dark:border-gray-600 p-2 rounded-none bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white h-20"
                             required
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="block text-sm font-bold mb-1 text-black">Date & Time *</label>
+                        <label className="block text-sm font-bold mb-1 text-black dark:text-gray-300">Date & Time *</label>
                         <input
                             type="datetime-local"
                             value={newEvent.date}
                             onChange={(e) => setNewEvent({ ...newEvent, date: e.target.value })}
-                            className="w-full border border-black p-2 rounded-none bg-white text-black focus:outline-none focus:ring-1 focus:ring-black"
+                            className="w-full border border-black dark:border-gray-600 p-2 rounded-none bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white"
                             required
                         />
                     </div>
                     <div className="mb-3">
-                        <label className="block text-sm font-bold mb-1 text-black">Location</label>
+                        <label className="block text-sm font-bold mb-1 text-black dark:text-gray-300">Location</label>
                         <input
                             type="text"
                             value={newEvent.location}
                             onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
-                            className="w-full border border-black p-2 rounded-none bg-white text-black focus:outline-none focus:ring-1 focus:ring-black"
+                            className="w-full border border-black dark:border-gray-600 p-2 rounded-none bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-black dark:focus:ring-white"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="bg-black text-white px-6 py-2 rounded-none hover:bg-gray-800 uppercase text-sm font-bold tracking-wide"
+                        className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-none hover:bg-gray-800 dark:hover:bg-gray-200 uppercase text-sm font-bold tracking-wide"
                     >
                         Create Event
                     </button>
@@ -195,41 +195,41 @@ export default function EventsClient({ constituency }: { constituency: string })
 
             <div className="space-y-4">
                 {events.length === 0 ? (
-                    <div className="text-gray-400 text-center italic text-sm border border-black p-8 bg-gray-50">
+                    <div className="text-gray-400 text-center italic text-sm border border-black dark:border-gray-700 p-8 bg-gray-50 dark:bg-gray-900">
                         -- No events scheduled --
                     </div>
                 ) : (
                     events.map((event) => (
                         <div
                             key={event.$id}
-                            className="border border-black p-4 rounded-none bg-white hover:bg-gray-50 transition-colors"
+                            className="border border-black dark:border-gray-700 p-4 rounded-none bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-750 transition-colors"
                         >
                             <div className="flex justify-between items-start mb-2">
-                                <h2 className="font-bold uppercase text-lg text-black">{event.title}</h2>
+                                <h2 className="font-bold uppercase text-lg text-black dark:text-white">{event.title}</h2>
                                 <div className="flex gap-2 items-center">
-                                    <span className={`text-xs border border-black px-2 py-1 text-black ${isUpcoming(event.date) ? 'bg-green-100' : 'bg-gray-200'
+                                    <span className={`text-xs border border-black dark:border-gray-600 px-2 py-1 text-black dark:text-white ${isUpcoming(event.date) ? 'bg-green-100 dark:bg-green-900/30' : 'bg-gray-200 dark:bg-gray-700'
                                         }`}>
                                         {isUpcoming(event.date) ? 'UPCOMING' : 'PAST'}
                                     </span>
                                     {user && (
                                         <button
                                             onClick={() => handleDelete(event.$id)}
-                                            className="text-xs border border-red-600 text-red-600 px-2 py-1 hover:bg-red-600 hover:text-white"
+                                            className="text-xs border border-red-600 text-red-600 dark:text-red-400 dark:border-red-400 px-2 py-1 hover:bg-red-600 hover:text-white dark:hover:bg-red-400 dark:hover:text-black"
                                         >
                                             DELETE
                                         </button>
                                     )}
                                 </div>
                             </div>
-                            <p className="text-sm text-gray-600 mb-2">
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                                 📅 {formatDate(event.date)}
                             </p>
                             {event.location && (
-                                <p className="text-sm text-gray-600 mb-2">
+                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                                     📍 {event.location}
                                 </p>
                             )}
-                            <p className="text-sm mt-2 text-black">{event.description}</p>
+                            <p className="text-sm mt-2 text-black dark:text-gray-200">{event.description}</p>
                         </div>
                     ))
                 )}

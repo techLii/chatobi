@@ -82,23 +82,23 @@ export default function TrendingClient({ constituency }: { constituency: string 
             {trendingMessages.map((msg, index) => (
                 <div
                     key={msg.$id}
-                    className="border border-black p-4 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                    className="border border-black dark:border-gray-700 p-4 bg-white dark:bg-gray-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)] transition-all"
                 >
                     <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
                         <div className="flex items-center gap-2">
-                            <span className="font-bold text-sm bg-black text-white px-2 py-0.5">
+                            <span className="font-bold text-sm bg-black dark:bg-white text-white dark:text-black px-2 py-0.5">
                                 #{index + 1}
                             </span>
-                            <span className="font-bold text-sm">{msg.username}</span>
-                            <span className="text-xs text-gray-500">
+                            <span className="font-bold text-sm text-black dark:text-white">{msg.username}</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">
                                 {new Date(msg.$createdAt).toLocaleDateString()}
                             </span>
                         </div>
-                        <div className="flex items-center gap-1 bg-green-100 px-2 py-1 rounded border border-green-200">
-                            <span className="text-green-700 font-bold">▲ {msg.score}</span>
+                        <div className="flex items-center gap-1 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded border border-green-200 dark:border-green-800">
+                            <span className="text-green-700 dark:text-green-400 font-bold">▲ {msg.score}</span>
                         </div>
                     </div>
-                    <p className="text-gray-800 whitespace-pre-wrap">{msg.body}</p>
+                    <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap">{msg.body}</p>
                 </div>
             ))}
         </div>
